@@ -1,17 +1,20 @@
 
 
-1. tools
-    * mongostat
-    * mongotop
-    * db.serverStatus()
-    * db.stats()
-    * db.currentOp()
+tools
+------------------
+
+- mongostat
+- mongotop
+- db.serverStatus()
+- db.stats()
+- db.currentOp()
 
 
-2. issue about mongo performance
+issue about mongo performance
+----------------------------------
 
-    * RAM
-    * locks time
-    * page fault
-    * connections number
+- RAM
+- locks time
+- page fault
+- connections number
 
