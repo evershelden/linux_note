@@ -25,3 +25,16 @@
     file locks                      (-x) unlimited
 
 
+#. 查看系统当前的并发连接数
+
+    > netstat -n | awk '/^tcp/ {++state[$NF]} END {for(key in state) print key,"t",state[key]}'
+
+        TIME_WAIT t 2727
+        CLOSE_WAIT t 8
+        SYN_SENT t 3
+        FIN_WAIT1 t 56
+        FIN_WAIT2 t 5915
+        ESTABLISHED t 6813
+        SYN_RECV t 87
+        CLOSING t 6
+        LAST_ACK t 130
