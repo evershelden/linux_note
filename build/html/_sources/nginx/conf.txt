@@ -10,7 +10,6 @@ worker_connections
     每个worker 的连接池大小。 所以nginx能接收的总的连接数 = worker_connections * worker_processes
 
 
-
 unknown
 ``````````````````
 worker_rlimit_nofile    ?
