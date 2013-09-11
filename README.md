@@ -1,4 +1,0 @@
-linux_note
-==========
-
-notebook

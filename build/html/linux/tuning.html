@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.4. 通用调优 &mdash; notebook 0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="notebook 0 documentation" href="../index.html" />
+    <link rel="up" title="3. linux documentation" href="index.html" />
+    <link rel="next" title="3.5. vim 乱码" href="vim.html" />
+    <link rel="prev" title="3.1. history 在多终端下的表现" href="bash.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="vim.html" title="3.5. vim 乱码"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="bash.html" title="3.1. history 在多终端下的表现"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">notebook 0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">3. linux documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>3.4. 通用调优<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic">
+<li><p class="first">ulimit 限制</p>
+<p>一般一台机器，先用 <cite>ulimit -a</cite> 看一下，系统是否有限制资源使用, 例如:</p>
+<div class="highlight-python"><pre>&gt; ulimit
+
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 93592
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1024
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 1024
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited</pre>
+</div>
+</li>
+<li><p class="first">查看系统当前的并发连接数</p>
+<blockquote>
+<div><p>&gt; netstat -n | awk &#8216;/^tcp/ {++state[$NF]} END {for(key in state) print key,&#8221;t&#8221;,state[key]}&#8217;</p>
+<blockquote>
+<div><p>TIME_WAIT t 2727
+CLOSE_WAIT t 8
+SYN_SENT t 3
+FIN_WAIT1 t 56
+FIN_WAIT2 t 5915
+ESTABLISHED t 6813
+SYN_RECV t 87
+CLOSING t 6
+LAST_ACK t 130</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ol>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="bash.html"
+                        title="previous chapter">3.1. history 在多终端下的表现</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="vim.html"
+                        title="next chapter">3.5. vim 乱码</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/linux/tuning.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="vim.html" title="3.5. vim 乱码"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="bash.html" title="3.1. history 在多终端下的表现"
+             >previous</a> |</li>
+        <li><a href="../index.html">notebook 0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >3. linux documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, evershelden.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
