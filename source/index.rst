@@ -10,7 +10,6 @@ Contents:
 
 .. toctree::
    :maxdepth: 1
-   :numbered:
    :titlesonly:
 
    c/index

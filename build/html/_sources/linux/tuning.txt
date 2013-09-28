@@ -38,3 +38,47 @@
         SYN_RECV t 87
         CLOSING t 6
         LAST_ACK t 130
+
+
+#. 内核调优
+
+    socket 连接中，打开TCP_DEFER_ACCEPT 选项
+
+    高并发配置:
+        - fs.file_max = 9999999
+          最大的打开文件数
+
+        - net.ipv4.tcp_tw_reuse = 1
+          设置为１，　表示允许TIME_WAIT 状态的socket可以重用， 这对于服务器来说很有意义，
+          因为服务器上总会有大量的TIME_WAIT状态的连接
+
+        - net.ipv4.tcp_keepalive_time = 600
+          默认２小时，设置小一点，可以更快清理无效连接
+
+        - net.ipv4.tcp_fin_timeout = 30
+          当服务器主动关闭连接时，　socket 保持在　FIN_WAIT状态的时间
+
+        - net.ipv4.tcp_max_tw_buckets = 5000
+          这个参数表示操作系统允许TIME_WAIT 套接字数量的最大值，如果超过这个数字，TIME_WAIT套接字将立刻被清除并
+          打印警告信息。该参数默认为180000, 过多的TIME_WAIT套接字会使服务器变慢。
+
+        - net.ipv4.ip_local_port_range = 1024
+
+        - net.ipv4.tcp_rmem = 4096 32768 262142
+
+        - net.ipv4.tcp_wmem = 4096 32768 262142
+
+        - net.ipv4.tcp_syncookies = 1
+
+        - net.ipv4.tcp_max_syn.backlog = 1024
+
+        - net.core.netdev_max_backlog = 8096
+
+        - net.core.rmem_default = 262144
+
+        - net.core.wmem_default = 262144
+
+        - net.core.rmem_max = 2097152
+        
+        - net.core.wmem_max = 2097152
+

@@ -53,9 +53,13 @@
             
   <div class="section" id="accept-mutex">
 <h1>5.1. accept_mutex<a class="headerlink" href="#accept-mutex" title="Permalink to this headline">¶</a></h1>
+<p>两个作用:</p>
 <blockquote>
-<div>避免惊群效果(每个 accept 上一把锁)
-负载平衡(如果当前worker有任务，则不参与竞争，直接返回处理当前任务)</div></blockquote>
+<div><ul class="simple">
+<li><strong>避免惊群效果</strong> (每个 accept 上一把锁)</li>
+<li><strong>负载平衡</strong> (如果当前worker有任务，则不参与竞争，直接返回处理当前任务)</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="worker-connections">
 <h1>5.2. worker_connections<a class="headerlink" href="#worker-connections" title="Permalink to this headline">¶</a></h1>
@@ -64,8 +68,10 @@
 </div>
 <div class="section" id="unknown">
 <h1>5.3. unknown<a class="headerlink" href="#unknown" title="Permalink to this headline">¶</a></h1>
-<p>worker_rlimit_nofile    ?
-keepalive_timeout</p>
+<ul class="simple">
+<li><strong>worker_rlimit_nofile</strong>    ?</li>
+<li><strong>keepalive_timeout</strong></li>
+</ul>
 </div>
 
 

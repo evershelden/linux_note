@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>linux documentation &mdash; notebook 0 documentation</title>
+    <title>性能调优 &mdash; notebook 0 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -23,9 +23,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="notebook 0 documentation" href="../index.html" />
-    <link rel="next" title="3.1. history 在多终端下的表现" href="bash.html" />
-    <link rel="prev" title="2.7. this is a test" href="../hadoop/test.html" /> 
+    <link rel="top" title="notebook 0 documentation" href="../index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,12 +32,6 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="bash.html" title="3.1. history 在多终端下的表现"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="../hadoop/test.html" title="2.7. this is a test"
-             accesskey="P">previous</a> |</li>
         <li><a href="../index.html">notebook 0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -49,17 +41,38 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="linux-documentation">
-<h1>linux documentation<a class="headerlink" href="#linux-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
+  <div class="section" id="id1">
+<h1>性能调优<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="nginx">
+<h2>调试nginx<a class="headerlink" href="#nginx" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>方法1: 打开 &#8211;with-debug</li>
+<li>方法2: Debugging nginx with DTrace pid provider
+<a class="reference external" href="http://nginx.org/en/docs/nginx_dtrace_pid_provider.html">http://nginx.org/en/docs/nginx_dtrace_pid_provider.html</a></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>负载均衡<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="bash.html">3.1. history 在多终端下的表现</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bash.html#id1">3.2. history 设置</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bash.html#id2">3.3. 判断程序输出是否重定向</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tuning.html">通用调优</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vim.html">3.5. vim 乱码</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iptable.html">防火墙设置</a></li>
+<li><p class="first">DNS 轮循
+由于存在缺点，所以一般用于可靠性要求不高的集群，如：图片服务器、纯静态网页服务器</p>
+<dl class="docutils">
+<dt>缺点:</dt>
+<dd><ul class="first last simple">
+<li>可靠性低
+假设一个域名DNS 轮循多台服务器，如果其中一台服务器发生故障，那么所有访问该
+服务器的请求都不会有所回应，这是任何人都不愿意看到的。即时从DNS中去掉该服务器
+的ＩＰ，　但是在Internet上，各地区电信的接入商，都会将DNS放入缓存。ＤＮＳ记录
+全部生效需要几个小时，甚至更久。</li>
+<li>负载分配不均匀
+虽然采用简单的轮循算法。但是由于各层缓存的问题，还是会出现某些服务器负载偏高，
+某些很低。</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">反向代理</p>
+</li>
 </ul>
 </div>
 </div>
@@ -70,15 +83,18 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="../hadoop/test.html"
-                        title="previous chapter">2.7. this is a test</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="bash.html"
-                        title="next chapter">3.1. history 在多终端下的表现</a></p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">性能调优</a><ul>
+<li><a class="reference internal" href="#nginx">调试nginx</a></li>
+<li><a class="reference internal" href="#id2">负载均衡</a></li>
+</ul>
+</li>
+</ul>
+
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/linux/index.txt"
+    <li><a href="../_sources/nginx/tuning.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -104,12 +120,6 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="bash.html" title="3.1. history 在多终端下的表现"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="../hadoop/test.html" title="2.7. this is a test"
-             >previous</a> |</li>
         <li><a href="../index.html">notebook 0 documentation</a> &raquo;</li> 
       </ul>
     </div>
