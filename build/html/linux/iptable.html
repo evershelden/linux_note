@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>防火墙设置 &mdash; notebook 0 documentation</title>
+    <title>3.6. 防火墙设置 &mdash; notebook 0 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="notebook 0 documentation" href="../index.html" />
-    <link rel="up" title="linux documentation" href="index.html" />
+    <link rel="up" title="3. linux documentation" href="index.html" />
     <link rel="next" title="4. mongo documentation" href="../mongo/index.html" />
     <link rel="prev" title="3.5. vim 乱码" href="vim.html" /> 
   </head>
@@ -42,7 +42,7 @@
           <a href="vim.html" title="3.5. vim 乱码"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">notebook 0 documentation</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">linux documentation</a> &raquo;</li> 
+          <li><a href="index.html" accesskey="U">3. linux documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,16 +52,16 @@
           <div class="body">
             
   <div class="section" id="id1">
-<h1>防火墙设置<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>3.6. 防火墙设置<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>开一个端口<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>3.6.1. 开一个端口<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>sudo iptables -I INPUT -p tcp -m state &#8211;state NEW -m tcp &#8211;dport 9003 -j ACCEPT</p>
 <p>注意要用 -I, 因为如果 iptable 中设置了 reject ALL, 那么如果用-A 的话， reject 的优先级会在新的append之前</p>
 </div></blockquote>
 </div>
 <div class="section" id="id3">
-<h2>保存配置<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>3.6.2. 保存配置<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>sudo iptables-save &gt; /etc/iptables.up.rule</div></blockquote>
 </div>
@@ -75,9 +75,9 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">防火墙设置</a><ul>
-<li><a class="reference internal" href="#id2">开一个端口</a></li>
-<li><a class="reference internal" href="#id3">保存配置</a></li>
+<li><a class="reference internal" href="#">3.6. 防火墙设置</a><ul>
+<li><a class="reference internal" href="#id2">3.6.1. 开一个端口</a></li>
+<li><a class="reference internal" href="#id3">3.6.2. 保存配置</a></li>
 </ul>
 </li>
 </ul>
@@ -123,7 +123,7 @@
           <a href="vim.html" title="3.5. vim 乱码"
              >previous</a> |</li>
         <li><a href="../index.html">notebook 0 documentation</a> &raquo;</li>
-          <li><a href="index.html" >linux documentation</a> &raquo;</li> 
+          <li><a href="index.html" >3. linux documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
